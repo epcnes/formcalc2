@@ -3,6 +3,7 @@
 
 #importing things#
 from googlesearch import search; import requests; from bs4 import BeautifulSoup as bs
+from requests.api import head
 from sympy import init_printing; import sympy as sy
 from pylatexenc.latex2text import LatexNodes2Text
 init_printing()
@@ -19,12 +20,13 @@ lower_case  = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
                'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 displaystyle = ['{\displaystyle', '{\\displaystyle']
 i = 0
-t =0
+t = 0
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36'}
 
 #opens first result and grabs html formula#
-search_result = search(inquiry, num=1, lang="en")
+search_result = search(inquiry, num=1)
 for url in search_result:
-    r = requests.get(url)
+    r = requests.get(url, headers=headers)
     soup = bs(r.content, 'html.parser')
     for item in soup.find_all('img'):
         components.append(item['alt'])
@@ -47,9 +49,8 @@ while i <= (componentcount - t):
     if components[0][0] == " " or components[0][0] == "" or components[0][0] in capital_case or components[0][0] in lower_case or components[0][0] == "(" or components[0][0:1] == "\\" or components[0][0:14] != "{\\displaystyle" or components[0][0:13] != "{\diplaystyle":
         del components[0]
         t = t + 1
-    elif components[1][0:14] == "{\\displaystyle" or components [1][0:13] == "{\displaystyle":
-        new_components.append(components[1])
-        del components[0]
+    if components[0][0:14] == "{\\displaystyle" or components [0][0:13] == "{\displaystyle":
+        new_components.append(components[0])
         del components[0]
         t = t + 1
     i = i + 1
@@ -57,7 +58,7 @@ while i <= (componentcount - t):
 
 print ("3:", components[0:4]) #checkpoint
 equation = components[0]
-#print ("3.1:", equation) #checkpoint
+print ("3.1:", equation) #checkpoint
 
 #modifying the formula to work with the latex things
 if equation[0] in displaystyle:
@@ -76,9 +77,9 @@ items = len(equation) - 1
 seperator = " "
 equation = seperator.join(equation)
 equation.replace(",", "")
-#print ("4:", components[0:4]) #checkpoint
+print ("4:", components[0:4]) #checkpoint
 equation = components[0]
-#print ("5:", equation) #checkpoint
+print ("5:", equation) #checkpoint
 
 #display equation please i beg
 #i am a god
