@@ -2,7 +2,7 @@
 #!pip install googlesearch-python; !pip install requests; !pip install bs4
 
 #importing things#
-import googlesearch as ggl; import requests; from bs4 import BeautifulSoup as bs
+from googlesearch import search; import requests; from bs4 import BeautifulSoup as bs
 from sympy import init_printing; import sympy as sy
 from pylatexenc.latex2text import LatexNodes2Text
 init_printing()
@@ -22,12 +22,12 @@ i = 0
 t =0
 
 #opens first result and grabs html formula#
-search_result = ggl.search(inquiry)
+search_result = search(inquiry)
 for url in search_result:
     r = requests.get(url)
     soup = bs(r.content, 'html.parser')
-    for item in soup.find_all("img"):
-        components.append(item["alt"])
+    for item in soup.find_all('img'):
+        components.append(item['alt'])
 while componentcount <= 5:
     if components[0] == '':
         components.pop(0)
@@ -49,7 +49,8 @@ while i <= (componentcount - t):
         t = t + 1
     elif components[1][0:14] == "{\\displaystyle" or components [1][0:13] == "{\displaystyle":
         new_components.append(components[1])
-        del components[1]
+        del components[0]
+        del components[0]
         t = t + 1
     i = i + 1
 #eliminate regular text and keep mathjax#
