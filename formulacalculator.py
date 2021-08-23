@@ -77,15 +77,10 @@ if equation[0] in displaystyle:
         equation = components[0]
 else:
     equation = '{\\displaystyle ' + equation + ' }'
-<<<<<<< HEAD
 
 equation.replace("," , "")
 #print ("4:", components[0:4]) #checkpoint
 equation = components[0]
-=======
-equation.replace("," , "")
-#print ("4:", new_components[0:4]) #checkpoint
->>>>>>> 98201a8ba3305b87111183089b6ef2540d29ccdd
 #print ("5:", equation) #checkpoint
 
 #display equation please i beg
