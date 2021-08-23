@@ -43,19 +43,23 @@ print (url)
 
 components = sorted(components) #sort list alphabetically (?)#
 print ("2: ", components[0:4])
-while i <= (componentcount - t):
-    if components[0][0] == " " or components[0][0] == "" or components[0][0] in capital_case or components[0][0] in lower_case or components[0][0] == "(" or components[0][0:1] == "\\" or components[0][0:14] != "{\\displaystyle" or components[0][0:13] != "{\diplaystyle":
+while i <= (componentcount - i):
+    if components[0][0] == " " or components[0][0] == "" or components[0][0] in capital_case or components[0][0] in lower_case or components[0][0] == "(":
         del components[0]
-        t = t + 1
-    elif components[1][0:14] == "{\\displaystyle" or components [1][0:13] == "{\displaystyle":
-        new_components.append(components[1])
-        del components[1]
-        t = t + 1
+    elif components[0][0:12] == "\displaystyle":
+        new_components.append(components[0])
+        del components[0]
+    else:
+        new_components.append(components[0])
+        del components[0]
+    #print (f"2.1.{i}: {components[0:2]}")
+    #print (f"2.2.{i}: {new_components[0:4]}")
     i = i + 1
+components = []
 #eliminate regular text and keep mathjax#
 
-print ("3:", components[0:4]) #checkpoint
-equation = components[0]
+print ("3:", new_components[0:4]) #checkpoint
+equation = new_components[0]
 #print ("3.1:", equation) #checkpoint
 
 #modifying the formula to work with the latex things
@@ -71,12 +75,10 @@ if equation[0] in displaystyle:
         equation = seperator.join(equation)
         index = components.index('{\\displaystyle ' + equation)
         equation = components[0]
-items = len(equation) - 1
-seperator = " "
-equation = seperator.join(equation)
+else:
+    equation = '{\\displaystyle ' + equation + ' }'
 equation.replace(",", "")
-#print ("4:", components[0:4]) #checkpoint
-equation = components[0]
+#print ("4:", new_components[0:4]) #checkpoint
 #print ("5:", equation) #checkpoint
 
 #display equation please i beg
