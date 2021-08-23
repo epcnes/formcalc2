@@ -38,11 +38,11 @@ while componentcount <= 5:
 while '' in components:
     components.remove('') #removing empty string
 componentcount = len(components)
-print ("1: ", components[0:4]) #checkpoint
+#print ("1: ", components[0:4]) #checkpoint
 print (url)
 
 components = sorted(components) #sort list alphabetically (?)#
-print ("2: ", components[0:4])
+#print ("2: ", components[0:4])
 while i <= (componentcount - i):
     if components[0][0] == " " or components[0][0] == "" or components[0][0] in capital_case or components[0][0] in lower_case or components[0][0] == "(":
         del components[0]
@@ -58,7 +58,7 @@ while i <= (componentcount - i):
 components = []
 #eliminate regular text and keep mathjax#
 
-print ("3:", new_components[0:4]) #checkpoint
+#print ("3:", new_components[0:4]) #checkpoint
 equation = new_components[0]
 #print ("3.1:", equation) #checkpoint
 
@@ -89,6 +89,19 @@ latex_equation = LatexNodes2Text().latex_to_text(latex_string)
 print(latex_equation)
 
 #make the variables in the formula usable
+print (equation)
+seperator = " "
+variables = equation.split(seperator)
+print ("5: ", variables) #checkpoint
+var_count = len(variables)-1
+for n in range (0, var_count):
+    globals()[f"variable: {n}"] = f"variable {n} = {variables[n]}"
+    if n == 0:
+        variables[0] = variables[0]
+    elif n == var_count:
+        variables[var_count] == variables[var_count]
+    else:
+        variables[n] == input(f"{variables[n]} = ")
 #ask for input of variable values
 #if input = "solve for" then make it something
 #default (no input) is ya know what you're already solving for
