@@ -54,8 +54,8 @@ while i <= (componentcount - t):
     i = i + 1
 #eliminate regular text and keep mathjax#
 
-print ("3:", components[0:4]) #checkpoint
-equation = components[0]
+print ("3:", new_components[0:4]) #checkpoint
+equation = new_components[0]
 #print ("3.1:", equation) #checkpoint
 
 #modifying the formula to work with the latex things
@@ -71,10 +71,10 @@ if equation[0] in displaystyle:
         equation = seperator.join(equation)
         index = components.index('{\\displaystyle ' + equation)
         equation = components[0]
-items = len(equation) - 1
-seperator = " "
-equation = seperator.join(equation)
-equation.replace(",", "")
+else:
+    equation = '{\\displaystyle ' + equation + ' }'
+
+equation.replace("," , "")
 #print ("4:", components[0:4]) #checkpoint
 equation = components[0]
 #print ("5:", equation) #checkpoint
