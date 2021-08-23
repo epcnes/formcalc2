@@ -94,14 +94,17 @@ seperator = " "
 variables = equation.split(seperator)
 print ("5: ", variables) #checkpoint
 var_count = len(variables)-1
+#ask for input of variable values
 for n in range (0, var_count):
     globals()[f"variable: {n}"] = f"variable {n} = {variables[n]}"
     if n == 0:
         variables[0] = variables[0]
     elif n == var_count:
-        variables[var_count] == variables[var_count]
+        variables[var_count] = variables[var_count]
     else:
-        variables[n] == input(f"{variables[n]} = ")
-#ask for input of variable values
+        if len(variables[n]) == 1:
+            del variables[n]
+        else:
+            variables[n] == input(f"{variables[n]} = ")
 #if input = "solve for" then make it something
 #default (no input) is ya know what you're already solving for
