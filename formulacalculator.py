@@ -22,7 +22,7 @@ i = 0
 t =0
 
 #opens first result and grabs html formula#
-search_result = ggl.search(inquiry, num=1, lang="en")
+search_result = ggl.search(inquiry)
 for url in search_result:
     r = requests.get(url)
     soup = bs(r.content, 'html.parser')
@@ -79,9 +79,7 @@ else:
     equation = '{\\displaystyle ' + equation + ' }'
 
 equation.replace("," , "")
-#print ("4:", components[0:4]) #checkpoint
-equation = components[0]
-#print ("5:", equation) #checkpoint
+#print ("4:", equation) #checkpoint
 
 #display equation please i beg
 #i am a god
