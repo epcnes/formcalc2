@@ -22,7 +22,7 @@ i = 0
 t =0
 
 #opens first result and grabs html formula#
-search_result = ggl.search(inquiry)
+search_result = ggl.search(inquiry, num=1, lang="en")
 for url in search_result:
     r = requests.get(url)
     soup = bs(r.content, 'html.parser')
