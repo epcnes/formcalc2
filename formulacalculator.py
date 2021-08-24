@@ -5,7 +5,7 @@
 import googlesearch as ggl; import requests; from bs4 import BeautifulSoup as bs
 from sympy import init_printing; import sympy as sy
 from pylatexenc.latex2text import LatexNodes2Text
-init_printing()
+init_printing(use_latex=True)
 
 #defining things#
 components = []
@@ -22,6 +22,7 @@ i = 0
 t =0
 functions = []
 inputvar = []
+valuevar = 0
 
 #opens first result and grabs html formula#
 search_result = ggl.search(inquiry)
@@ -104,18 +105,19 @@ for n in range (0, var_count):
     elif n == var_count:
         variables[var_count] = variables[var_count]
     else:
-        if len(variables[n]) == 1:
-            del variables[n]
-        else:
-            variables[n] == input(f"{variables[n]} = ")
-            if variables[n] == "":
-                solvefor = variables[n]
-            else:
-                int(variables[n])
         if variables[n] in functions:
             inputvar.append(variables[n])
             del variables[n]
         else:
             inputvar.append(variables[n])
+        if len(variables[n]) <= 1:
+            del variables[n]
+        else:
+            valuevar == input(f"{variables[n]} = ")
+            if valuevar == "":
+                solvefor = variables[n]
+            else:
+                int(valuevar, base=0)
+
 #if input = "solve for" then make it something
 #default (no input) is ya know what you're already solving for
