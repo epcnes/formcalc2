@@ -20,6 +20,8 @@ lower_case  = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
 displaystyle = ['{\displaystyle', '{\\displaystyle']
 i = 0
 t =0
+functions = []
+inputvar = []
 
 #opens first result and grabs html formula#
 search_result = ggl.search(inquiry)
@@ -106,5 +108,14 @@ for n in range (0, var_count):
             del variables[n]
         else:
             variables[n] == input(f"{variables[n]} = ")
+            if variables[n] == "":
+                solvefor = variables[n]
+            else:
+                int(variables[n])
+        if variables[n] in functions:
+            inputvar.append(variables[n])
+            del variables[n]
+        else:
+            inputvar.append(variables[n])
 #if input = "solve for" then make it something
 #default (no input) is ya know what you're already solving for
