@@ -5,7 +5,7 @@
 import googlesearch as ggl; import requests; from bs4 import BeautifulSoup as bs
 from sympy import init_printing; import sympy as sy
 from pylatexenc.latex2text import LatexNodes2Text
-init_printing(use_latex=True)
+init_printing(use_latex=False)
 
 #defining things#
 components = []
@@ -117,7 +117,7 @@ for n in range (0, var_count):
             if valuevar == "":
                 solvefor = variables[n]
             else:
-                int(valuevar, base=0)
+                int(valuevar)
 
 #if input = "solve for" then make it something
 #default (no input) is ya know what you're already solving for
