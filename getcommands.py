@@ -1,16 +1,24 @@
 from bs4 import BeautifulSoup as bs; from pprint import pprint
-import requests; import lxml.html as lh; import bs4
+import requests; import lxml.html as lh; import bs4; import time
 
 url = "https://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm"
 commands = []
+commentindex =[]
+i = 0
 
 r = requests.get(url)
 soup = bs(r.content, 'lxml')
-html = list(soup.children)[2]
-body = list(html.children)[3]
-table = list(body.children)[11]
-cells = list(table.children)[0]
 
-print (cells)
-# print([type(item) for item in list(cells.children)])
+rows = soup.findAll('td', {'class': 'command'})
 
+while i <= (len(rows)-24):
+    if i <= 26:
+        i = i +1
+        continue
+
+    burner = str(rows[i])
+    burner = burner.split('"')
+    commands.append(f"\{burner[len(burner)-2]}")
+    # print (burner)
+    i = i + 1
+print (commands)
