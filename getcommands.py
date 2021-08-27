@@ -4,6 +4,7 @@ import requests; import lxml.html as lh; import bs4; import time
 url = "https://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm"
 commands = []
 commands2 =[]
+
 i = 0
 
 r = requests.get(url)
@@ -22,4 +23,3 @@ while i <= (len(rows)-24):
     commands2.append(burner[len(burner)-2])
     # print (burner)
     i = i + 1
-
