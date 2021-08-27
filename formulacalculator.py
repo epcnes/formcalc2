@@ -5,6 +5,7 @@
 import googlesearch as ggl; import requests; from bs4 import BeautifulSoup as bs
 from sympy import init_printing; import sympy as sy
 from pylatexenc.latex2text import LatexNodes2Text
+from latexcommands import commands, commands2
 init_printing(use_latex=False)
 
 #defining things#
@@ -20,7 +21,8 @@ lower_case  = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
 displaystyle = ['{\displaystyle', '{\\displaystyle']
 i = 0
 t =0
-functions = []
+functions = commands
+functions2 = commands2
 inputvar = []
 valuevar = 0
 
