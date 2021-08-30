@@ -25,9 +25,6 @@ while i <= (len(rows)-24):
 
 #write a file and read it#
 latex_commandlist = open("latexcommands.py", "w")
-
 latex_commandlist.write(f"commands = {commands}")
-
 latex_commandlist.write(f"\ncommands2 = {commands2}")
-
 latex_commandlist.close()
