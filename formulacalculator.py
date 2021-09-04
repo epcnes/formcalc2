@@ -36,8 +36,8 @@ search_result = ggl.search(inquiry)
 for url in search_result:
     r = requests.get(url)
     soup = bs(r.content, 'lxml')
-    for item in soup.find_all('img', {'class':  'alt'}):
-        components.append(item)
+    for item in soup.find_all('img'):
+        components.append(item['alt'])
 while componentcount <= 5:
     if components[0] == '':
         components.pop(0)
@@ -96,13 +96,15 @@ equation.replace(",", "")
 equation = sy.latex(equation)
 latex_string = f"{equation}"
 latex_equation = LatexNodes2Text().latex_to_text(latex_string)
-# print(latex_equation)
+print("latex: " + latex_equation)
 
 # make the variables in the formula usable
 print(equation)
 seperator = " "
 variables = equation.split(seperator)
 print("5: ", variables)  # checkpoint
+if variables[0] == "\\mathtt{\\text{\\{\\textbackslashdisplaystyle":
+    del variables[0]
 var_count = len(variables)-1
 # ask for input of variable values
 for n in range(0, var_count):
