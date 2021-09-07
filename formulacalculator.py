@@ -32,12 +32,14 @@ inputvar = []
 valuevar = 0
 
 #opens first result and grabs html formula#
-search_result = ggl.search(inquiry)
+search_result = ggl.search(inquiry, tld='com', num=1, stop=1)
 for url in search_result:
     r = requests.get(url)
     soup = bs(r.content, 'lxml')
+    # print(url)
     for item in soup.find_all('img'):
         components.append(item['alt'])
+# print(url)
 while componentcount <= 5:
     if components[0] == '':
         components.pop(0)
@@ -103,8 +105,9 @@ print(equation)
 seperator = " "
 variables = equation.split(seperator)
 print("5: ", variables)  # checkpoint
-if variables[0] == "\\mathtt{\\text{\\{\\textbackslashdisplaystyle":
-    del variables[0]
+
+#use function list thingy to identify what is variable and what is operation#
+
 var_count = len(variables)-1
 # ask for input of variable values
 for n in range(0, var_count):
