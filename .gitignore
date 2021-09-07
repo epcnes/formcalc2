@@ -1,1 +1,4 @@
 .vscode/settings.json
+.google-cookie
+.vscode
+__pycache__
