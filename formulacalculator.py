@@ -12,7 +12,7 @@ from sympy import init_printing
 
 from latexcommands import commands, commands2
 
-init_printing(use_latex=False)
+init_printing(use_latex=True)
 
 #defining things#
 components = []
