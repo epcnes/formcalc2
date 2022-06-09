@@ -20,6 +20,7 @@ equations = bs(topic.html(),"html.parser").find_all('annotation')
 
 #make formula pretty and send it to latex file#
 equation = equations[0].text.split("{\displaystyle ")[1][:-1]
+equation = equation.replace("{","",99999); equation = equation.replace("}","",99999)
 f = open('formula.tex', 'w')
 f.write(equation)
 f.close()
