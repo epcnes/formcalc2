@@ -2,22 +2,15 @@ import os
 import string
 import matlab.engine
 from sympy import symbols
+from dicts import *
+import shutil
+
 syms = []; i = 0; j=0
 eng = matlab.engine.start_matlab()
+dir = os.getcwd()
 
 #create dictionary of upper and lowercase letters#
 alphabet = list(string.ascii_letters)
-greek = [
-        '\\alpha', '\\beta', '\\gamma','\\Gamma', '\\delta', '\\Delta', '\\epsilon', '\\zeta', 
-        '\\eta', '\\theta', '\\vartheta', '\\Theta', '\\iota', '\\kappa', '\\varkappa', '\\lambda', 
-        '\\Lambda', '\\mu', '\\nu', '\\xi', '\\omicron', '\\pi', '\\Pi', '\\varpi',
-        '\\rho', '\\varrho', '\\sigma', '\\varsigma', '\\Sigma', '\\tau', '\\upsilon', '\\Upsilon',
-        '\\phi', '\\Phi', '\\varphi', '\\chi', '\\psi', '\\Psi', '\\omega', '\\Omega', '\\varepsilon'
-        ]
-latexMath = [
-            "\\frac", "\\pm", "\\sqrt", "\\int", "\\oint", "\\iint",
-            "\\sum", "\\prod", "\\coprod"
-]
 f = open('formula.tex')
 equation = f.read()
 
@@ -43,4 +36,7 @@ while j < len(modEquation):
     j += 1
 
 print(syms)
-# os.remove("formula.tex")
+
+#note: keep these together and last#
+f.close()
+os.remove(f"{dir}\\formula.tex")

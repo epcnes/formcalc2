@@ -15,8 +15,10 @@ for url in searchResult:
 url = url.split('/')[-1]
 url = url.replace('%27', "'"); query = url.replace('_'," ")
     #oh shit look, it's the wikipedia page!#
-topic = wikipedia.page(query)
+topic = wikipedia.page(query, auto_suggest=False)
 equations = bs(topic.html(),"html.parser").find_all('annotation')
+
+#ask user if formulas are correct#
 
 #make formula pretty and send it to latex file#
 equation = equations[0].text.split("{\displaystyle ")[1][:-1]
