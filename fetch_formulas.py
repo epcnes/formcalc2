@@ -1,13 +1,10 @@
 # packages used just in case
 #!pip install googlesearch-python; !pip install requests; !pip install bs4, !pip install wikipedia
 
-from sympy import init_printing, pretty_print
 import wikipedia
 from bs4 import BeautifulSoup as bs
 import googlesearch as ggl
 import requests
-
-init_printing(use_latex=True)
 
 #getting formula name and wikipedia page#
 inquiry = input("Enter formula name: ") + " equation wikipedia"
@@ -21,6 +18,8 @@ url = url.replace('%27', "'"); query = url.replace('_'," ")
 topic = wikipedia.page(query)
 equations = bs(topic.html(),"html.parser").find_all('annotation')
 
-#make formula pretty and print it#
-equation = equations[-1].text.split("{\displaystyle ")[1][:-1]
-print(equation)
+#make formula pretty and send it to latex file#
+equation = equations[0].text.split("{\displaystyle ")[1][:-1]
+f = open('formula.tex', 'w')
+f.write(equation)
+f.close()
