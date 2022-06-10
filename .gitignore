@@ -1,2 +1,6 @@
 .google-cookie
 formula.tex
+.vscode/settings.json
+__pycache__/dicts.cpython-39.pyc
+sqltools_20220609185547_3004.log
+testing.py

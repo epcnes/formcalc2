@@ -1,0 +1,16 @@
+{
+    "formulas": [
+        {
+            "name": "pythagorean",
+            "formula": "a^2 + b^2 = c^2"
+        },
+        {
+            "name": "quadratic",
+            "formula": "x= \\frac -b\\pm \\sqrt b^2 - 4ac2a"
+        },
+        {
+            "name": "gauss",
+            "formula": "\\Phi _E=\\frac Q\\varepsilon _0"
+        }
+    ]
+}
