@@ -23,7 +23,7 @@ url = url.split('/')[-1]; url = url.replace('%27', "'"); query = url.replace('_'
 topic = wikipedia.page(query, auto_suggest=False)
 equations = bs(topic.html(),"html.parser").find_all('annotation')
 
-#ask user if formulas are correct - if yes, add to json#
+#ask user if formulas are correct - if yes, add to db#
 while correct == False:
     while i < len(equations):
         equation = equations[i].text.split("{\displaystyle ")[1][:-1]
